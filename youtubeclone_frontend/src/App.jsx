@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import REACT_APP_KEY from './key' 
+
+
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
+        apiKey: REACT_APP_KEY, 
         videoId: '',
         video: '',
         videos: [],
@@ -16,12 +20,13 @@ class App extends Component {
 
   }
 
+  
 
 
   render() { 
     return ( 
       <div>
-        
+
       </div>
      );
   }
