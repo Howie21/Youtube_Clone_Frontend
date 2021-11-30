@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import REACT_APP_KEY from './key' 
 
+import SearchBar from "./components/SearchBar/SearchBar";
+import Sidebar from "./components/SideBar/SideBar";
+import Comments from "./components/Comments/Comments";
+
 
 
 class App extends Component {
@@ -71,9 +75,30 @@ class App extends Component {
 
 
   render() { 
+    let title = 'YoutubeClone'
+    let description = 'YoutubeClone'
+    if(this.state.video !== ''){
+      title = unescape(this.state.video.snippet.title)
+      description = unescape(this.state.video.snippet.description)
+    }
+
     return ( 
       <div>
-
+        <div className="header">
+          <img src="../public/youtube_icon.png" />
+          <SearchBar startSearch={this.getSearch} />
+        </div>
+        <div className="row">
+          <div className="col-8">
+            <iframe id="existing-iframe-example" width="100%" height="650px" src={`https://www.youtube.com/embed/${this.state.videoId}`} ></iframe>
+            <h3>{title}</h3>
+            <h5>{description}</h5>
+            {<Comments videoId={this.state.videoId} comments={this.state.comments} addComment={this.addComment} />}
+          </div>
+          <div className="col-3 d-flex justify-content-left sidebar">
+            <Sidebar videos={this.state.videos} selectVideo={this.selectVideo} />
+          </div>
+        </div>
       </div>
      );
   }
