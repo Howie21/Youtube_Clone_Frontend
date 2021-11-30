@@ -39,7 +39,34 @@ class App extends Component {
     this.getComments()
   }
 
-  
+  async getComments() {
+    let response = await axios.get('http://127.0.0.1:8000/comment/')
+    this.filterComments(response.data)
+  }
+
+  filterComments(arr){
+    let filteredComments = []
+    arr.forEach(comment => {
+      if(comment.videoId === this.state.videoId) {
+        filteredComments.push(comment)
+      }
+    })
+    this.setState({
+      comments: filteredComments
+    })
+  }
+
+  addComment = () => {
+    this.getComments()
+  }
+
+  selectVideo = (videoId, video) => {
+    this.setState({
+      videoId: videoId,
+      video: video
+    })
+    this.getComments()
+  }
 
 
 
