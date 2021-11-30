@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import REACT_APP_KEY from './key' 
+// import REACT_APP_KEY from 'key' 
 
 import SearchBar from "./components/SearchBar/SearchBar";
 import Sidebar from "./components/SideBar/SideBar";
@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        apiKey: REACT_APP_KEY, 
+        apiKey: 'AIzaSyCJVIG5ET8Pb_Z6_pi18hYUPI5CeUmhJ1U', 
         videoId: '',
         video: '',
         videos: [],
@@ -33,7 +33,7 @@ class App extends Component {
     })
   }
 
-  getSearch = async(event) => {
+  getSearch = async(search) => {
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${this.state.apiKey}&q=${search}`)
     this.setState({
       videos: response.data.items,
@@ -90,7 +90,7 @@ class App extends Component {
         </div>
         <div className="row">
           <div className="col-8">
-            <iframe id="existing-iframe-example" width="100%" height="650px" src={`https://www.youtube.com/embed/${this.state.videoId}`} ></iframe>
+            <iframe title='thumbnailHolder' id="existing-iframe-example" width="100%" height="650px" src={`https://www.youtube.com/embed/${this.state.videoId}`} ></iframe>
             <h3>{title}</h3>
             <h5>{description}</h5>
             {<Comments videoId={this.state.videoId} comments={this.state.comments} addComment={this.addComment} />}
