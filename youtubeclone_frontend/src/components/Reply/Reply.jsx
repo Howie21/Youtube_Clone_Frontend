@@ -4,7 +4,7 @@ import RepliesDisplay from '../RepliesDisplay/RepliesDisplay';
 
 
 
-class Replies extends Component {
+class Reply extends Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -18,7 +18,7 @@ class Replies extends Component {
     }
 
     async getReplies(){
-        let response = await axios.get(`http://127.0.0.1:8000/replies/`)
+        let response = await axios.get(`http://127.0.0.1:8000/reply/`)
         this.setState({
             replies: response.data
         })
@@ -34,7 +34,7 @@ class Replies extends Component {
         this.setState({
             replies: [...this.state.replies, reply]
         })
-        await axios.post(`http://127.0.0.1:8000/replies/`, reply)
+        await axios.post(`http://127.0.0.1:8000/reply/`, reply)
     }
 
     handleChange = (event) => {
@@ -54,4 +54,4 @@ class Replies extends Component {
     }
 }
 
-export default Replies;
+export default Reply;
