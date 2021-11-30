@@ -51,6 +51,7 @@ class Comments extends Component {
        this.setState({
            comments: [...this.state.comments, comment]
        })
+       console.log(comment)
        await axios.post("http://127.0.0.1:8000/comment/", comment)
        this.props.addComment()
    }
@@ -67,7 +68,7 @@ class Comments extends Component {
     this.setState({
         comments: newArr
     })
-    await axios.patch(`http://127.0.0.1:8000/comments/${id}/`, { [name]: value })
+    await axios.patch(`http://127.0.0.1:8000/comment/${id}/`, { [name]: value })
     }
 
 

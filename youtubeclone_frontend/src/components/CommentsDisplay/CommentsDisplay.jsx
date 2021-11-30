@@ -21,7 +21,7 @@ const CommentsDisplay = (props) => {
                 value = comment[name]
             }
         })
-        await axios.patch(`http://127.0.0.1:8000/comment/${id}/`, { [name]: value })
+        await axios.patch(`http://127.0.0.1:8000/comment/${comment.id}/`, { [name]: value })
         SetToggle(!toggle)
         SetComment(newArr)
  }
@@ -29,7 +29,7 @@ const CommentsDisplay = (props) => {
     return(
         <div>
             {props.comments.map(comment => {
-                        if(comment.videoId === props.videoId){ 
+                        if(comment.video === props.videoId){ 
                             return <div key={comment.id}>
                                         <p>{comment.comment}</p>
                                         <div>

@@ -34,6 +34,7 @@ class Reply extends Component {
         this.setState({
             replies: [...this.state.replies, reply]
         })
+        console.log(this.state.replies)
         await axios.post(`http://127.0.0.1:8000/reply/`, reply)
     }
 
