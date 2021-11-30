@@ -74,7 +74,13 @@ class Comments extends Component {
    render() {
        return (
          <div>
-
+             <form onSubmit={this.handleSubmit}>
+                <input name="comment" onChange={this.handleChange} value={this.state.comment}></input>
+                <button type="submit">Post Comment</button>
+             </form>
+             <div>
+                 <CommentsDisplay comments={this.state.comments} videoId={this.props.videoId}/>
+             </div>
          </div>
         );
    }
