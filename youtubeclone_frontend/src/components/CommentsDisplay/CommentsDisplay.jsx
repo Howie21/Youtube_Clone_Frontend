@@ -32,10 +32,12 @@ const CommentsDisplay = (props) => {
                         if(comment.videoId === props.videoId){ 
                             return <div key={comment.id}>
                                         <p>{comment.comment}</p>
-                                        <button name="likes" onClick={() => increment(comment.id, 'likes')}>Like</button>
-                                        {<p>{comment.likes}</p>}
-                                        <button name="dislikes" onClick={() => increment(comment.id, 'dislikes')}>Dislike</button>
-                                        {<p>{comment.dislikes}</p>}
+                                        <div>
+                                            <button name="likes" onClick={() => increment(comment.id, 'likes')}>Like</button>
+                                            {<p>{comment.likes}</p>}
+                                            <button name="dislikes" onClick={() => increment(comment.id, 'dislikes')}>Dislike</button>
+                                            {<p>{comment.dislikes}</p>}
+                                        </div>
                                         <Reply key={comment.id} commentId={comment.id} videoId={props.videoId} />
                                     </div>
                         }

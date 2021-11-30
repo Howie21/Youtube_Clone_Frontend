@@ -20,7 +20,7 @@ class Comments extends Component {
 
     handleChange = (event) => {
         this.setState({
-            comments: event.target.value
+            comment: event.target.value
         })
    }
 
@@ -40,7 +40,7 @@ class Comments extends Component {
 
    }
 
-   handleSubmit = (event) => {
+   handleSubmit = async(event) => {
        event.preventDefault();
        let comment = {
           comment: this.state.comment,
@@ -89,3 +89,5 @@ class Comments extends Component {
 
 
 }
+
+export default Comments;
