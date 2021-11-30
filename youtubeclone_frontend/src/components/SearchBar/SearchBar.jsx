@@ -27,7 +27,7 @@ class SearchBar extends Component {
         return ( 
             <div>
                 <input value={this.state.search} name="search" onChange={this.handleChange}></input>
-                <button onClick={() => this.handleSubmit(this.state.search)}></button>
+                <button onClick={() => this.handleSubmit(this.state.search)}>Search</button>
             </div>
          );
     }
